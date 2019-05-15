@@ -1,0 +1,3 @@
+;{:server/pedestal {:service (ig/ref :service/pedestal) :service-map (ig/ref :service-map/pedestal)}
+; :service/pedestal {}
+; :service-map/pedestal }

@@ -1,0 +1,15 @@
+{:deps
+ {
+  com.stuartsierra/component {:mvn/version "0.4.0"}
+  ;integrant                    {:mvn/version "0.7.0"}
+  io.pedestal/pedestal.service {:mvn/version "0.5.5"}
+  io.pedestal/pedestal.route {:mvn/version "0.5.5"}
+  io.pedestal/pedestal.jetty {:mvn/version "0.5.5"}
+  org.slf4j/slf4j-simple {:mvn/version "1.8.0-beta4"}
+  instaparse                   {:mvn/version "1.4.10"}
+  org.clojure/tools.cli {:mvn/version "0.4.2"}
+  reloaded.repl {:mvn/version "0.2.4"}
+  clj-time {:mvn/version "0.15.1"}}
+ :mvn/repos
+ {"clojars" {:url "https://clojars.org/repo"}
+  "central" {:url "https://repo1.maven.org/maven2/"}}}
