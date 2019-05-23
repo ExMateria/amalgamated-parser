@@ -4,8 +4,10 @@
             [parser.defaults :as d]))
 
 ; TODO - move this into a component to deal with state
+
+
 (def datastore
-  (atom (sorted-map)))
+  (atom (hash-map)))
 
 (defn supplement-record [rec]
   (let [{:keys [parsed]} rec
