@@ -49,9 +49,9 @@
                          ))
                      [[] coll]
                      possible-values-ordering-or-x-scend-indicator))
-    (if (= :desc possible-values-ordering-or-x-scend-indicator)
-      (reverse (sort-by key-to-order-on coll))
-      (sort-by key-to-order-on coll))))
+    (flatten (if (= :desc possible-values-ordering-or-x-scend-indicator)
+               (reverse (sort-by key-to-order-on coll))
+               (sort-by key-to-order-on coll)))))
 
 (defn return-records [sorting]
   (let [ds @datastore

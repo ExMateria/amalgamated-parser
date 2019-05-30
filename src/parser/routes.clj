@@ -49,14 +49,18 @@
 ;                         2 [[:DateOfBirth :asc]]
 ;                         3 [[:LastName :desc]]}
 (defn get-records [req]
-  (let [column (get req :path-params)
-        records (ds/return-records (condp re-matches column
-                                     #"(?i)gender" by-gender-output
-                                     #"(?i)birthdate" by-birthday-output
-                                     #"(?i)name" by-name-output
-                                     :else {:error (str "Column " column " designated path parameter doesn't match any available sort parameters.")}
-                                     ))]
-    {:status 200 :body (json/generate-string {:records records})}
+  (let [path-params (get req :path-params)
+        column (get path-params :column)
+        records (if (nil? column)
+                  nil
+                  (ds/return-records (condp (fn [x y] (re-matches x y)) column
+                                       #"(?i)gender" by-gender-output
+                                       #"(?i)birthdate" by-birthday-output
+                                       #"(?i)name" by-name-output
+                                       :else {:error (str "Column " column " designated path parameter doesn't match any available sort parameters.")}
+                                       )))
+        preformatted-records (map :parsed (flatten records))]
+    {:status 200 :body (json/generate-string preformatted-records)}
     ))
 
 (def routes
